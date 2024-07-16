@@ -5,29 +5,29 @@ import { Context } from "..";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { server } from "../index";
+import { IoMdHome } from "react-icons/io";
 
 export default function Navbar() {
   const [sidebar, setSidebar] = useState(false);
-  const { isAuthenticated, setIsAuthenticated, loading, setLoading } = useContext(Context);
+  const { isAuthenticated, setIsAuthenticated, loading, setLoading } =
+    useContext(Context);
 
-  const logoutHandler=async(e)=>{
+  const logoutHandler = async (e) => {
     setLoading(true);
     try {
-      const data = await axios.post(
-        `${server}/user/logout`,
-        {
+      const data = await axios.post(`${server}/user/logout`, {
         withCredentials: true,
-      })
+      });
       toast.success("Logged Out Successfully");
       setIsAuthenticated(false);
       setLoading(false);
     } catch (error) {
       toast.error(error.response.data.message);
-      console.log(error)
+      console.log(error);
       setIsAuthenticated(true);
       setLoading(false);
     }
-  }
+  };
 
   return (
     <>
@@ -79,19 +79,11 @@ export default function Navbar() {
                     Home
                   </Link>
                 </li>
-                {/* <li>
-                  <Link
-                    to="/profile"
-                    className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                  >
-                    Profile
-                  </Link>
-                </li> */}
-                {isAuthenticated===true ? (
+                {isAuthenticated === true ? (
                   <li>
                     <button
-                    disabled={loading}
-                    onClick={logoutHandler}
+                      disabled={loading}
+                      onClick={logoutHandler}
                       className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                     >
                       Log Out
@@ -99,14 +91,6 @@ export default function Navbar() {
                   </li>
                 ) : (
                   <>
-                    {/* <li>
-                      <Link
-                        to="/Register"
-                        className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                      >
-                        Sign Up
-                      </Link>
-                    </li> */}
                     <li>
                       <Link
                         to="/Login"
@@ -135,7 +119,7 @@ export default function Navbar() {
             Menu
           </h5>
           <button
-          onClick={() => setSidebar(!sidebar)}
+            onClick={() => setSidebar(!sidebar)}
             type="button"
             data-drawer-hide="drawer-navigation"
             aria-controls="drawer-navigation"
@@ -257,72 +241,76 @@ export default function Navbar() {
                   href="#"
                   className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                 >
+                  {/* <IoMdHome className="text-gray-400 h-4 w-4"/> */}
                   <svg
-  className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-  aria-hidden="true"
+                  className="w-5 h-5"
+  fill="#9CA3AF"
+  // height="20px"
+  // width="20px"
+  version="1.1"
+  id="Capa_1"
   xmlns="http://www.w3.org/2000/svg"
-  fill="none"
-  viewBox="0 0 24 24"
+  // xmlns:xlink="http://www.w3.org/1999/xlink"
+  viewBox="0 0 330.242 330.242"
+  // xml:space="preserve"
+  stroke="#9CA3AF"
 >
-  <path
-    stroke="currentColor"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    strokeWidth="2"
-    d="M3 12l9-9 9 9m-9-9v18"
-  />
+  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+  <g id="SVGRepo_iconCarrier">
+    <path
+      d="M324.442,129.811l-41.321-33.677V42.275c0-6.065-4.935-11-11-11h-26c-6.065,0-11,4.935-11,11v14.737l-55.213-44.999
+        c-3.994-3.254-9.258-5.047-14.822-5.047c-5.542,0-10.781,1.782-14.753,5.019L5.8,129.81c-6.567,5.351-6.173,10.012-5.354,12.314
+        c0.817,2.297,3.448,6.151,11.884,6.151h19.791v154.947c0,11.058,8.972,20.053,20,20.053h62.5c10.935,0,19.5-8.809,19.5-20.053
+        v-63.541c0-5.446,5.005-10.405,10.5-10.405h42c5.238,0,9.5,4.668,9.5,10.405v63.541c0,10.87,9.388,20.053,20.5,20.053h61.5
+        c11.028,0,20-8.996,20-20.053V148.275h19.791c8.436,0,11.066-3.854,11.884-6.151C330.615,139.822,331.009,135.161,324.442,129.811z"
+    />
+  </g>
 </svg>
+
+
+
 
                   <span className="flex-1 ms-3 whitespace-nowrap">Home</span>
                 </a>
               </li>
               <li>
-              {isAuthenticated===true ? (
-                <button
-                disabled={loading}
+                {isAuthenticated === true ? (
+                  <button
+                    disabled={loading}
                     onClick={logoutHandler}
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-              >
-                <svg
-                  className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M3 12l9-9 9 9m-9-9v18"
-                  />
-                </svg>
-                <span className="flex-1 ms-3 whitespace-nowrap">Sign In</span>
-              </button>
-                
-                ) : (
-                <Link
-                  to="/login"
-                  className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-                >
-                  <svg
-                    className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 18 16"
+                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                   >
-                    <path
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3"
-                    />
-                  </svg>
-                  <span className="flex-1 ms-3 whitespace-nowrap">Sign In</span>
-                </Link>
+                    <svg fill="#9CA3AF" className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 384.971 384.971"  stroke="#9CA3AF"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g id="Sign_Out"> <path d="M180.455,360.91H24.061V24.061h156.394c6.641,0,12.03-5.39,12.03-12.03s-5.39-12.03-12.03-12.03H12.03 C5.39,0.001,0,5.39,0,12.031V372.94c0,6.641,5.39,12.03,12.03,12.03h168.424c6.641,0,12.03-5.39,12.03-12.03 C192.485,366.299,187.095,360.91,180.455,360.91z"></path> <path d="M381.481,184.088l-83.009-84.2c-4.704-4.752-12.319-4.74-17.011,0c-4.704,4.74-4.704,12.439,0,17.179l62.558,63.46H96.279 c-6.641,0-12.03,5.438-12.03,12.151c0,6.713,5.39,12.151,12.03,12.151h247.74l-62.558,63.46c-4.704,4.752-4.704,12.439,0,17.179 c4.704,4.752,12.319,4.752,17.011,0l82.997-84.2C386.113,196.588,386.161,188.756,381.481,184.088z"></path> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> </g> </g></svg>
+
+                    <span className="flex-1 ms-3 whitespace-nowrap">
+                      Logout
+                    </span>
+                  </button>
+                ) : (
+                  <Link
+                    to="/login"
+                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  >
+                    <svg
+                      className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 18 16"
+                    >
+                      <path
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3"
+                      />
+                    </svg>
+                    <span className="flex-1 ms-3 whitespace-nowrap">
+                      Sign In
+                    </span>
+                  </Link>
                 )}
               </li>
               <li>
