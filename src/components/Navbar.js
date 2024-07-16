@@ -79,14 +79,14 @@ export default function Navbar() {
                     Home
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link
                     to="/profile"
                     className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                   >
                     Profile
                   </Link>
-                </li>
+                </li> */}
                 {isAuthenticated===true ? (
                   <li>
                     <button
@@ -158,7 +158,7 @@ export default function Navbar() {
           </button>
           <div className="py-4 overflow-y-auto">
             <ul className="space-y-2 font-medium">
-              <li>
+              {/* <li>
                 <a
                   href="#"
                   className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
@@ -251,10 +251,59 @@ export default function Navbar() {
                     Products
                   </span>
                 </a>
-              </li>
+              </li> */}
               <li>
                 <a
                   href="#"
+                  className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                >
+                  <svg
+  className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+  aria-hidden="true"
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  viewBox="0 0 24 24"
+>
+  <path
+    stroke="currentColor"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    strokeWidth="2"
+    d="M3 12l9-9 9 9m-9-9v18"
+  />
+</svg>
+
+                  <span className="flex-1 ms-3 whitespace-nowrap">Home</span>
+                </a>
+              </li>
+              <li>
+              {isAuthenticated===true ? (
+                <button
+                disabled={loading}
+                    onClick={logoutHandler}
+                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              >
+                <svg
+                  className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M3 12l9-9 9 9m-9-9v18"
+                  />
+                </svg>
+                <span className="flex-1 ms-3 whitespace-nowrap">Sign In</span>
+              </button>
+                
+                ) : (
+                <Link
+                  to="/login"
                   className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                 >
                   <svg
@@ -273,7 +322,8 @@ export default function Navbar() {
                     />
                   </svg>
                   <span className="flex-1 ms-3 whitespace-nowrap">Sign In</span>
-                </a>
+                </Link>
+                )}
               </li>
               <li>
                 <a
