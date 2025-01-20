@@ -15,24 +15,7 @@ function App() {
   // const [profile,setProfile]= useState("");
 
 
-  useEffect(()=>{
-    const myProfile=async()=>{
-      try {
-        const data = await axios.get(
-          `${server}/user/myprofile`,
-          {
-          withCredentials: true,
-        })
-        // console.log(data.data.user)
-        setUser(data.data.user);
-        setIsAuthenticated(true);
-      } catch (error) {
-        setUser({});
-        setIsAuthenticated(false);
-      }
-    }
-    myProfile();
-  },[])
+  
  
   return (
     <>

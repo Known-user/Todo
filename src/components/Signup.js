@@ -29,7 +29,6 @@ export default function Register() {
         withCredentials: true,
       })
       toast.success(data.data.message);
-      <Navigate to={"/login"} />
       setLoading(false);
     } catch (error) {
       toast.error(error.response.data.message);
@@ -133,7 +132,7 @@ export default function Register() {
                 </label>
               </div>
               <button disabled={loading} type="submit" className="w-full bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 mb-4">
-                Login
+                Sign Up
               </button>
               <p className="text-center text-zinc-600 dark:text-zinc-400">
                 Already have an account?{" "}
