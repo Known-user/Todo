@@ -29,7 +29,7 @@ export default function Register() {
         withCredentials: true,
       })
       toast.success(data.data.message);
-      setIsAuthenticated(true);
+      <Navigate to={"/login"} />
       setLoading(false);
     } catch (error) {
       toast.error(error.response.data.message);
